@@ -15,7 +15,7 @@
 
 <!--Navbar start-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#" th:inline="text">Welcome [[${user.firstName}]]</a>
+    <a class="navbar-brand" th:inline="text">Welcome [[${user.username}]]</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -49,14 +49,13 @@
 <a th:href="@{/post}"><button>Write a new post</button></a>
 
 
-<table>
+
 <!--    <tr th:if="${posts.size()} == 0">-->
 <!--        <th>-->
 <!--            There are no posts on your timeline.-->
 <!--        </th>-->
 <!--    </tr>-->
-
-    <tr th:each="post : ${posts}">
+    <div th:each="post : ${user.posts}">
         <!--card begin-->
         <div class="card text-center">
             <div class="card-header" th:inline="text">
@@ -70,10 +69,7 @@
                 2 days ago
             </div>
         </div>
-
         <!--card end-->
-    </tr>
-</table>
-
+    </div>
 </body>
 </html>

@@ -27,7 +27,7 @@ public class HomeController {
     @RequestMapping("/secure")
     public String secure(Principal principal, Model model){
         String username = principal.getName();
-        model.addAttribute("user", userRepository.findByUsername(username));
+        model.addAttribute("user", userRepository.findAll());
         model.addAttribute("post", postRepository.findAll());
 
         return "secure";
@@ -35,8 +35,10 @@ public class HomeController {
 
     @RequestMapping("/")
     public String index(Principal principal, Model model){
+//        Set<User> users = new HashSet<User>();
+//        Set<Post> posts = new HashSet<Post>();
         String username = principal.getName();
-        model.addAttribute("user", userRepository.findByUsername(username));
+        model.addAttribute("user", userRepository.findAll());
         model.addAttribute("post", postRepository.findAll());
         return "index";
     }
