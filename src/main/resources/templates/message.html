@@ -21,7 +21,7 @@
 
 <!--Navbar start-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#" th:inline="text">Welcome</a>
+    <a class="navbar-brand" href="#">Welcome Admin</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -52,19 +52,19 @@
 <!--Navbar end-->
 
 
-<form autocomplete="off" action="#" th:action="@{/post}" th:object="${user}" method="post">
+<form autocomplete="off" action="#" th:action="@{/post}" th:object="${post}" method="post">
     <!--card-->
     <div class="card">
         <h5 class="card-header">New Post</h5>
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Header</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="What's this post about?">
+                <input type="text" th:field="*{header}" class="form-control" id="exampleFormControlInput1" placeholder="What's this post about?">
             </div>
             <div class="form-group">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="What's happening?"></textarea>
+                <textarea class="form-control" th:field="*{post}" id="exampleFormControlTextarea1" rows="3" placeholder="What's happening?"></textarea>
             </div>
-            <a href="#" class="btn btn-primary"><button>Post</button></a>
+            <input type="submit" class="btn btn-primary" value="Post">
 
         </div>
     </div>
@@ -77,7 +77,6 @@
         </strong>
     </mark>
     <br>
-    <button type="submit" class="btn btn-default">Submit</button>
 </form>
 
 

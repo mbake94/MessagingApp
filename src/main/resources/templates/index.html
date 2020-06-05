@@ -50,11 +50,11 @@
 
 
 <table>
-    <tr th:if="${posts == 0}">
-        <th>
-            There are no posts on your timeline.
-        </th>
-    </tr>
+<!--    <tr th:if="${posts.size()} == 0">-->
+<!--        <th>-->
+<!--            There are no posts on your timeline.-->
+<!--        </th>-->
+<!--    </tr>-->
 
     <tr th:each="post : ${posts}">
         <!--card begin-->

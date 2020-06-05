@@ -2,6 +2,7 @@ package com.example.demo;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
@@ -13,12 +14,10 @@ public class Post {
     private long id;
 
     @Column(name = "header")
-    @NotEmpty
     private String header;
 
     @Column(name = "post")
-    @NotEmpty
-    @Size(max = 120)
+    @Size(min = 1, max = 120)
     private String post;
 
 

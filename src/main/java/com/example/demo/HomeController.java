@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,6 +28,7 @@ public class HomeController {
     public String secure(Principal principal, Model model){
         String username = principal.getName();
         model.addAttribute("user", userRepository.findByUsername(username));
+        model.addAttribute("post", postRepository.findAll());
 
         return "secure";
     }
@@ -35,6 +37,7 @@ public class HomeController {
     public String index(Principal principal, Model model){
         String username = principal.getName();
         model.addAttribute("user", userRepository.findByUsername(username));
+        model.addAttribute("post", postRepository.findAll());
         return "index";
     }
 
@@ -85,7 +88,7 @@ public class HomeController {
 
 
 
-
+    Post posts = new Post();
 
 
     @GetMapping("/post")
@@ -97,7 +100,7 @@ public class HomeController {
     }
 
     @PostMapping("/post")
-    public String post(@Valid @ModelAttribute("user")Post post, User user, BindingResult result, Model model, Principal principal){
+    public String post(@Valid @ModelAttribute("post")Post post, User user, BindingResult result, Model model, Principal principal){
         model.addAttribute("post", post);
         String username = principal.getName();
         model.addAttribute("user", userRepository.findByUsername(username));
@@ -106,9 +109,9 @@ public class HomeController {
         } else {
             model.addAttribute("message", "Status Updated");
             Role role = new Role(user.getUsername(), "ROLE_USER");
-            Set<Role> roles = new HashSet<Role>();
-            Set<Post> posts = new HashSet<Post>();
-            roles.add(role);
+            ArrayList<Post> posts = new ArrayList<Post>();
+            Set<Post> message = new HashSet<Post>();
+            posts.add(post);
 
             roleRepository.save(role);
             userRepository.save(user);
