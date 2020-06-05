@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import com.sun.tools.javac.comp.Resolve;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;

@@ -14,9 +14,11 @@ public class Post {
     private long id;
 
     @Column(name = "header")
+    @NotEmpty
     private String header;
 
     @Column(name = "post")
+    @NotEmpty
     @Size(min = 1, max = 120)
     private String post;
 
@@ -29,7 +31,7 @@ public class Post {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "post_id")
+    @JoinColumn(name = "user_db")
     private User user;
 
 
